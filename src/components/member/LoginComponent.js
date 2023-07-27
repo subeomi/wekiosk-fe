@@ -34,6 +34,7 @@ const LoginComponent = () => {
 
                 <div className="flex flex-col justify-center items-center p-4">
                     <div className="mx-2 p-2 text-4xl font-extrabold cursor-pointer flex items-center">
+
                         <span className="text-indigo-600 pt-1 mr-1">
                             <ion-icon name="heart-outline"></ion-icon>
                         </span>
@@ -55,52 +56,61 @@ const LoginComponent = () => {
     return (
         <div>
             <div className="flex flex-col justify-center items-center p-4">
-                <div className="mx-2 p-2 text-4xl font-extrabold cursor-pointer flex items-center">
-                    <span className="text-indigo-600 pt-1 mr-1">
-                        <ion-icon name="accessibility-outline"></ion-icon>
-                    </span>
-                    SUBEOMI
+                <div className="mx-2 p-2 text-4xl font-extrabold cursor-pointer flex items-center mb-2">
+                    <div>
+                        <img src="img/logo.png" alt="logo" className="w-[440px]" />
+                    </div>
                 </div>
 
                 {/* <div className="text-3xl bg-red-500 my-2">
                 {loginState.loading ? '로그인 중' : ''}
             </div> */}
-
-                {errorMsg ? <div className="text-3xl bg-red-500 my-2">이메일과 패스워드를 다시 확인해 주세요.</div> : <></>}
-
-                <div className="flex items-center mb-2">
-                    <div className="flex items-center relative">
-                        <div className="absolute left-3 bottom-[4px] ${isFocused ? 'text-blue-500' : 'text-gray-500'}">
-                            <ion-icon name="person-outline"></ion-icon>
+                <div className="border-2 p-4 rounded-2xl w-[451px] flex flex-col justify-center items-center">
+                    <div className="flex items-center mt-4">
+                        <div className="flex items-center relative">
+                            <div className="absolute left-3 bottom-[10px] text-xl">
+                                <ion-icon name="person-outline"></ion-icon>
+                            </div>
+                            <input
+                                className="border-2 pl-9 py-1 rounded-t-lg w-[350px] h-[52px] focus:border-[rgb(228,108,10)] border-gray-200"
+                                type="text" name="memail" placeholder="이메일"
+                                value={loginInfo.memail}
+                                onChange={handleChange}
+                            ></input>
                         </div>
-                        <input
-                            className="border-2 border-black pl-8 py-1"
-                            type="text" name="memail" placeholder="E-MAIL"
-                            value={loginInfo.memail}
-                            onChange={handleChange}
-                        ></input>
+                    </div>
+                    <div className="flex items-center ">
+                        <div className="flex items-center relative">
+                            <div className="absolute left-3 bottom-[10px] text-xl">
+                                <ion-icon name="bag-outline"></ion-icon>
+                            </div>
+                            <input
+                                className="border-2 pl-9 py-1 rounded-b-lg w-[350px] h-[52px] focus:border-orange-600"
+                                type="password" name="mpw" placeholder="비밀번호"
+                                value={loginInfo.mpw}
+                                onChange={handleChange}
+                            ></input>
+                        </div>
+                    </div>
+
+                    <div className="my-4">
+                        <button
+                            className="bg-[rgb(228,108,10)] text-white p-2 w-[350px] h-[55px] rounded-lg font-extrabold mt-6"
+                            onClick={() => dispatch(postLoginThunk(loginInfo))}
+                        >로그인</button>
                     </div>
                 </div>
-
-                <div className="flex items-center ">
-                    <div className="flex items-center relative">
-                        <div className="absolute left-3 bottom-[4px]">
-                            <ion-icon name="bag-outline"></ion-icon>
-                        </div>
-                        <input
-                            className="border-2 border-black pl-8 py-1 "
-                            type="password" name="mpw" placeholder="PASSWORD"
-                            value={loginInfo.mpw}
-                            onChange={handleChange}
-                        ></input>
+                <div className="text-sm text-gray-400 mt-4 flex">
+                    <div className="px-5 border-r-2">
+                        <span className="cursor-pointer">
+                            비밀번호 찾기
+                        </span>
                     </div>
-                </div>
-
-                <div className="my-4">
-                    <button
-                        className="bg-indigo-400 text-white p-2 my-1 w-[213px]"
-                        onClick={() => dispatch(postLoginThunk(loginInfo))}
-                    >LOGIN</button>
+                    <div className="px-5 mr-7">
+                        <span className="cursor-pointer">
+                            회원가입
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
