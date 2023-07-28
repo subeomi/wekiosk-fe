@@ -3,6 +3,7 @@ import { getCookie, setCookie } from "../../util/cookieUtil";
 import { postLogin } from "../../api/memberAPI";
 import { getMessaging, getToken } from "firebase/messaging";
 import { initializeApp } from "firebase/app";
+import { useNavigate } from "react-router-dom";
 
 // 파라미터 첫 번째는 이름, 두 번째는 함수(비동기 함수)
 export const postLoginThunk =

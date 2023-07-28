@@ -1,13 +1,14 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { postLoginThunk, requestLogin, requestLogout } from "../../reducers/member/loginSlice"
+import { useNavigate } from "react-router-dom"
 
 const initState = {
     memail: 'lsbz@kiosk.com',
     mpw: '1111'
 }
 
-const LoginComponent = () => {
+const LoginComponent = ({moveTest, moveSignUp}) => {
 
     const loginState = useSelector(state => state.login)
 
@@ -19,40 +20,15 @@ const LoginComponent = () => {
 
     console.log("ERRORMSG: " + errorMsg)
 
+    const handleLogin = () => {
+        dispatch(postLoginThunk(loginInfo)).then(moveTest)
+    }
+
     const handleChange = (e) => {
         loginInfo[e.target.name] = e.target.value
         setLoginInfo({ ...loginInfo })
     }
 
-    const handleLogout = () => {
-        dispatch(requestLogout())
-    };
-
-    if (loginState.memail !== '') {
-        return (
-            <div>
-
-                <div className="flex flex-col justify-center items-center p-4">
-                    <div className="mx-2 p-2 text-4xl font-extrabold cursor-pointer flex items-center">
-
-                        <span className="text-indigo-600 pt-1 mr-1">
-                            <ion-icon name="heart-outline"></ion-icon>
-                        </span>
-                        {loginState.mname}님 환영합니다!
-                    </div>
-                    <button
-                        className="flex items-center border-2 border-gray-150 px-2 rounded-3xl text-sm hover:bg-gray-100 cursor-pointer"
-                        onClick={handleLogout}
-                    >
-                        당신을 버리고 떠나기
-                        <span className="text-xl pl-2 pt-1">
-                            <ion-icon name="log-out-outline"></ion-icon>
-                        </span>
-                    </button>
-                </div>
-            </div>
-        )
-    }
     return (
         <div>
             <div className="flex flex-col justify-center items-center p-4">
@@ -95,8 +71,8 @@ const LoginComponent = () => {
 
                     <div className="my-4">
                         <button
-                            className="bg-[rgb(228,108,10)] text-white p-2 w-[350px] h-[55px] rounded-lg font-extrabold mt-6"
-                            onClick={() => dispatch(postLoginThunk(loginInfo))}
+                            className="bg-[rgb(228,108,10)] text-white p-2 w-[350px] h-[55px] rounded-lg font-extrabold mt-6 text-xl"
+                            onClick={handleLogin}
                         >로그인</button>
                     </div>
                 </div>
@@ -107,7 +83,9 @@ const LoginComponent = () => {
                         </span>
                     </div>
                     <div className="px-5 mr-7">
-                        <span className="cursor-pointer">
+                        <span className="cursor-pointer"
+                            onClick={moveSignUp}
+                        >
                             회원가입
                         </span>
                     </div>
