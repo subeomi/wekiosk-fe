@@ -72,14 +72,15 @@ const BasicLayout = ({ children }) => {
 
             </div>
 
-            <div>
+            <div className="w-[calc(100vw-300px)]">
 
-            <div className="min-w-[100vw] w-[300px] h-[60px] bg-white flex flex-col items-center drop-shadow-xl border-r-2">
-            </div>
+                <div className="h-[60px] text-2xl font-bold bg-white flex items-center justify-center drop-shadow-xl border-r-2">
+                    현재 화면
+                </div>
 
-            <div className="container mx-auto min-w-[1280px] bg-white">
-                {children}
-            </div>
+                <div className="bg-white">
+                    {children}
+                </div>
             </div>
         </div>
     );
