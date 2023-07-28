@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getCookie, setCookie } from "../../util/cookieUtil";
 import { postLogin } from "../../api/memberAPI";
+import { getMessaging, getToken } from "firebase/messaging";
+import { initializeApp } from "firebase/app";
 
 // 파라미터 첫 번째는 이름, 두 번째는 함수(비동기 함수)
 export const postLoginThunk =
@@ -8,9 +10,29 @@ export const postLoginThunk =
         return postLogin(params)
     })
 
+const firebaseConfig = {
+    apiKey: "AIzaSyDllwTmvwZ0UeaSalOC8EL0ZXu6JqouZZs",
+    authDomain: "wekiosk-d7e45.firebaseapp.com",
+    projectId: "wekiosk-d7e45",
+    storageBucket: "wekiosk-d7e45.appspot.com",
+    messagingSenderId: "62019814911",
+    appId: "1:62019814911:web:cd6bff621c54ea0e8113ca",
+    measurementId: "G-2QKY1DEM92"
+};
+
+const app = initializeApp(firebaseConfig);
+const messaging = getMessaging(app);
+
 const loadCookie = () => {
 
     const loginObj = getCookie("login")
+
+    const token = getToken(messaging, {
+        vapidKey: process.env.REACT_APP_VAPID_KEY,
+    });
+
+    if (token) console.log("token: ", token);
+    else console.log("Can not get Token");
 
     console.log("login...")
     console.log(loginObj)

@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { postLoginThunk, requestLogin, requestLogout } from "../../reducers/member/loginSlice"
 
 const initState = {
-    memail: '',
-    mpw: ''
+    memail: 'lsbz@kiosk.com',
+    mpw: '1111'
 }
 
 const LoginComponent = () => {
@@ -65,14 +65,14 @@ const LoginComponent = () => {
                 {/* <div className="text-3xl bg-red-500 my-2">
                 {loginState.loading ? '로그인 중' : ''}
             </div> */}
-                <div className="border-2 p-4 rounded-2xl w-[451px] flex flex-col justify-center items-center">
+                <div className="border-2 p-4 rounded-2xl min-w-[450px] flex flex-col justify-center items-center">
                     <div className="flex items-center mt-4">
                         <div className="flex items-center relative">
                             <div className="absolute left-3 bottom-[10px] text-xl">
                                 <ion-icon name="person-outline"></ion-icon>
                             </div>
                             <input
-                                className="border-2 pl-9 py-1 rounded-t-lg w-[350px] h-[52px] focus:border-[rgb(228,108,10)] border-gray-200"
+                                className="border-2 pl-9 py-1 rounded-t-lg min-w-[350px] h-[52px] focus:border-[rgb(228,108,10)] border-gray-200"
                                 type="text" name="memail" placeholder="이메일"
                                 value={loginInfo.memail}
                                 onChange={handleChange}
