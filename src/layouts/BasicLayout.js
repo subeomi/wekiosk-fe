@@ -77,7 +77,8 @@ const BasicLayout = ({ children }) => {
 
             </div>
 
-            <div className="w-[calc(100vw-300px)]">
+            {/* [calc(100vw-300px)] */}
+            <div className="w-full">
 
                 <div className="h-[60px] text-2xl font-bold bg-white flex items-center justify-center border-b-2">
                     현재 화면
