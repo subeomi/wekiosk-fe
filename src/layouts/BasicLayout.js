@@ -16,7 +16,7 @@ const BasicLayout = ({ children }) => {
     return (
         <div className="flex">
             {/*  bg-opacity-90 */}
-            <div className="min-w-[300px] w-[300px] h-screen bg-white flex flex-col items-center drop-shadow-xl border-r-2">
+            <div className="min-w-[300px] w-[300px] h-screen bg-white flex flex-col items-center border-r-2">
                 <div className="px-7 py-2.5 border-b-2 h-[60px]">
                     <img src="img/logo.png" alt="logo" className="w-[440px]" />
                 </div>
@@ -74,7 +74,7 @@ const BasicLayout = ({ children }) => {
 
             <div className="w-[calc(100vw-300px)]">
 
-                <div className="h-[60px] text-2xl font-bold bg-white flex items-center justify-center drop-shadow-xl border-r-2">
+                <div className="h-[60px] text-2xl font-bold bg-white flex items-center justify-center border-b-2">
                     현재 화면
                 </div>
 
