@@ -27,7 +27,7 @@ const TestComponent = () => {
                     className="flex items-center border-2 border-gray-150 px-2 rounded-3xl text-sm hover:bg-gray-100 cursor-pointer"
                     onClick={handleLogout}
                 >
-                    당신을 버리고 떠나기
+                    우리를 버리고 떠나기
                     <span className="text-xl pl-2 pt-1">
                         <ion-icon name="log-out-outline"></ion-icon>
                     </span>

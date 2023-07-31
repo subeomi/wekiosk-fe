@@ -14,12 +14,17 @@ const LoginPage = () => {
         navigate('../signup')
     }
 
+    const moveFindPw = () => {
+        navigate('../findpw')
+    }
+
     return (
         <div>
             Login Page...
             <LoginComponent
                 moveTest={moveTest}
                 moveSignUp={moveSignUp}
+                moveFindPw={moveFindPw}
             ></LoginComponent>
         </div>
 

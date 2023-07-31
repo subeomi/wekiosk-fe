@@ -8,7 +8,7 @@ const initState = {
     mpw: '1111'
 }
 
-const LoginComponent = ({moveTest, moveSignUp}) => {
+const LoginComponent = ({moveTest, moveSignUp, moveFindPw}) => {
 
     const loginState = useSelector(state => state.login)
 
@@ -78,7 +78,9 @@ const LoginComponent = ({moveTest, moveSignUp}) => {
                 </div>
                 <div className="text-sm text-gray-400 mt-4 flex">
                     <div className="px-5 border-r-2">
-                        <span className="cursor-pointer">
+                        <span className="cursor-pointer"
+                            onClick={moveFindPw}
+                        >
                             비밀번호 찾기
                         </span>
                     </div>
