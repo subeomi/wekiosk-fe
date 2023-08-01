@@ -1,12 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { requestLogout } from "../reducers/member/loginSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const BasicLayout = ({ children }) => {
 
     const { memail, mname } = useSelector(state => state.login)
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const location = useLocation()
+
+    const isActivePath = (path) => location.pathname === path
 
     const handleLogout = () => {
         dispatch(requestLogout())
@@ -19,7 +22,7 @@ const BasicLayout = ({ children }) => {
     return (
         <div className="flex">
             {/*  bg-opacity-90 */}
-            <div className="min-w-[240px] h-screen bg-gray-100 flex flex-col items-center border-r-2">
+            <div className="min-w-[240px] min-h-screen bg-gray-100 flex flex-col items-center border-r-2">
                 <div className="px-4 py-3 border-b-2 h-[60px] w-full bg-white">
                     <img src="img/logo.png" alt="logo" className="w-[200px]" />
                 </div>
@@ -47,11 +50,29 @@ const BasicLayout = ({ children }) => {
                         <ion-icon name="chevron-forward-outline"></ion-icon>
                     </span>
                 </div>
-                <div className="px-4 py-2.5 bg-white border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer active:bg-[rgb(228,108,10)] active:text-white active:border-[rgb(228,108,10)]">
-                    <span>고객센터</span>
-                    <span className="flex justify-center">
-                        <ion-icon name="chevron-forward-outline"></ion-icon>
-                    </span>
+                <div className="w-full">
+                    <Link
+                        className={`${isActivePath("/faq/list")
+                            ? "px-4 py-2.5 border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer bg-[rgb(228,108,10)] text-white border-[rgb(228,108,10)]"
+                            : "px-4 py-2.5 bg-white border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer "}`}
+                        to={"/faq/list"}>
+                        고객센터
+                        <span className="flex justify-center">
+                            <ion-icon name="chevron-forward-outline"></ion-icon>
+                        </span>
+                    </Link>
+                </div>
+                <div className="w-full">
+                    <Link
+                        className={`${isActivePath("/membertest")
+                            ? "px-4 py-2.5 border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer bg-[rgb(228,108,10)] text-white border-[rgb(228,108,10)]"
+                            : "px-4 py-2.5 bg-white border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer "}`}
+                        to={"/membertest"}>
+                        TEST PAGE
+                        <span className="flex justify-center">
+                            <ion-icon name="chevron-forward-outline"></ion-icon>
+                        </span>
+                    </Link>
                 </div>
 
                 {isLoggedIn && (

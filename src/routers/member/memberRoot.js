@@ -10,6 +10,9 @@ const Member_SignUp = lazy(() => import("../../pages/member/SignUpPage"))
 const Member_Test = lazy(() => import("../../pages/member/TestPage"))
 const Member_FindPw = lazy(() => import("../../pages/member/FindPwPage"))
 
+const Faq_Index = lazy(() => import("../../pages/faq/IndexPage"))
+const Faq_List = lazy(() => import("../../pages/faq/ListPage"))
+
 const router = createBrowserRouter([
     {
         path: "login",
@@ -26,6 +29,16 @@ const router = createBrowserRouter([
     {
         path: "findpw",
         element: <Suspense fallback={Loading}><Member_FindPw/></Suspense>
+    },
+    {
+        path: "faq",
+        element: <Suspense fallback={Loading}><Faq_Index/></Suspense>,
+        children: [
+            {
+                path: "list",
+                element: <Suspense fallback={Loading}><Faq_List/></Suspense>
+            }
+        ]
     }
 ])
 
