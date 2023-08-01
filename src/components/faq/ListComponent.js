@@ -23,7 +23,6 @@ const ListComponent = ({ queryObj, movePage, moveRead }) => {
 
     // useEffect(() => {
 
-    //     // 리프레시 토큰까지 만료되면 catch에서 처리
     //     getList(queryObj).then(data => {
     //         console.log(data)
     //         setListData(data)
@@ -53,10 +52,19 @@ const ListComponent = ({ queryObj, movePage, moveRead }) => {
         getList({ ...queryObj, page: currentPage })
             .then((data) => {
                 console.log(data)
-                setListData((prevData) => ({
-                    ...data,
-                    dtoList: [...prevData.dtoList, ...data.dtoList], // 이전 데이터에 새로운 데이터 추가
-                }))
+
+                if (currentPage === 1) {
+                    // 검색 결과의 첫 페이지일 경우, 기존 데이터를 초기화하고 새로운 데이터를 설정
+                    setListData(data);
+                } else {
+                    // 검색 결과의 첫 페이지가 아닐 경우, 기존 데이터에 새로운 데이터를 추가
+                    setListData((prevData) => ({
+                        ...prevData,
+                        dtoList: [...prevData.dtoList, ...data.dtoList],
+                        end: data.end,
+                        next: data.next,
+                    }))
+                }
             })
             .catch((err) => {
                 console.log("----------------------")
@@ -64,6 +72,14 @@ const ListComponent = ({ queryObj, movePage, moveRead }) => {
                 console.log("======================")
             })
     }, [currentPage, queryObj])
+
+    useEffect(() => {
+
+        // 데이터 중복 방지
+        // 검색어(queryObj.keyword)가 변경될 때마다 페이지를 1로 초기화 + 모든 게시물 토글 off(빈 객체)
+        setCurrentPage(1)
+        setToggleRead({})
+    }, [queryObj.keyword])
 
     const handleLoadMore = () => {
         setCurrentPage((prevPage) => prevPage + 1)
