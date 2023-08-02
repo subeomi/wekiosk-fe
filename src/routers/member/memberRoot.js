@@ -10,6 +10,10 @@ const Member_SignUp = lazy(() => import("../../pages/member/SignUpPage"))
 const Member_Test = lazy(() => import("../../pages/member/TestPage"))
 const Member_FindPw = lazy(() => import("../../pages/member/FindPwPage"))
 
+const Store_Index = lazy(() => import("../../pages/stores/IndexPage"))
+const Store_Selete = lazy(() => import("../../pages/stores/SelectPage"))
+const Store_Regist = lazy(() => import("../../pages/stores/RegistPage"))
+
 const Faq_Index = lazy(() => import("../../pages/faq/IndexPage"))
 const Faq_List = lazy(() => import("../../pages/faq/ListPage"))
 
@@ -29,6 +33,20 @@ const router = createBrowserRouter([
     {
         path: "findpw",
         element: <Suspense fallback={Loading}><Member_FindPw/></Suspense>
+    },
+    {
+        path: "store",
+        element: <Suspense fallback={Loading}><Store_Index/></Suspense>,
+        children: [
+            {
+                path: "select",
+                element: <Suspense fallback={Loading}><Store_Selete/></Suspense>
+            },
+            {
+                path: "regist",
+                element: <Suspense fallback={Loading}><Store_Regist/></Suspense>
+            }
+        ]
     },
     {
         path: "faq",

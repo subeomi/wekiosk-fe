@@ -1,10 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { requestLogout } from "../reducers/member/loginSlice";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { storeChange } from "../reducers/member/storeSlice";
+import { delStore } from "../api/storeAPI";
 
 const BasicLayout = ({ children }) => {
 
     const { memail, mname } = useSelector(state => state.login)
+    const { sname, sno } = useSelector(state => state.store)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const location = useLocation()
@@ -13,8 +16,18 @@ const BasicLayout = ({ children }) => {
 
     const handleLogout = () => {
         dispatch(requestLogout())
+        dispatch(storeChange())
         navigate('../login')
-    };
+    }
+
+    const handleStoreChange = () => {
+        dispatch(storeChange())
+        navigate('/store/select')
+    }
+
+    const handleDelStore = () => {
+        delStore(sno).then(navigate('/store/select'))
+    }
 
     // mname과 memail이 유효한 값인지 확인
     const isLoggedIn = mname && memail;
@@ -78,6 +91,13 @@ const BasicLayout = ({ children }) => {
                 {isLoggedIn && (
                     <>
                         <div className="px-4 py-2.5 bg-white border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer active:bg-[rgb(228,108,10)] active:text-white active:border-[rgb(228,108,10)]"
+                            onClick={handleStoreChange}>
+                            <span>매장변경</span>
+                            <span className="flex justify-center">
+                                <ion-icon name="log-out-outline"></ion-icon>
+                            </span>
+                        </div>
+                        <div className="px-4 py-2.5 bg-white border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer active:bg-[rgb(228,108,10)] active:text-white active:border-[rgb(228,108,10)]"
                             onClick={handleLogout}>
                             <span>로그아웃</span>
                             <span className="flex justify-center">
@@ -90,8 +110,15 @@ const BasicLayout = ({ children }) => {
                             </div>
                             <div className="flex flex-col self-center">
                                 <span className="font-bold text-lg">{mname}님</span>
-                                <span className="text-gray-400 text-sm">{memail}</span>
+                                <span className="text-gray-400 text-sm">{sname}</span>
                             </div>
+                        </div>
+                        <div className="px-4 py-2.5 bg-white border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer active:bg-[rgb(228,108,10)] active:text-white active:border-[rgb(228,108,10)]"
+                            onClick={handleDelStore}>
+                            <span>매장삭제</span>
+                            <span className="flex justify-center">
+                                <ion-icon name="log-out-outline"></ion-icon>
+                            </span>
                         </div>
                     </>
                 )}

@@ -1,14 +1,13 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { postLoginThunk, requestLogin, requestLogout } from "../../reducers/member/loginSlice"
-import { useNavigate } from "react-router-dom"
 
 const initState = {
     memail: 'lsbz@kiosk.com',
     mpw: '1111'
 }
 
-const LoginComponent = ({moveTest, moveSignUp, moveFindPw}) => {
+const LoginComponent = ({ moveStoreSelect, moveSignUp, moveFindPw }) => {
 
     const loginState = useSelector(state => state.login)
 
@@ -21,7 +20,17 @@ const LoginComponent = ({moveTest, moveSignUp, moveFindPw}) => {
     console.log("ERRORMSG: " + errorMsg)
 
     const handleLogin = () => {
-        dispatch(postLoginThunk(loginInfo)).then(moveTest)
+        dispatch(postLoginThunk(loginInfo))
+            .then(data => {
+
+                console.log('data: ', data)
+                if(data.payload !== undefined){
+                    moveStoreSelect()
+                }
+            })
+            .catch(error => {
+                console.log("Login failed:", error)
+            })
     }
 
     const handleChange = (e) => {

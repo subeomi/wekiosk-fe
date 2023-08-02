@@ -6,8 +6,8 @@ const LoginPage = () => {
 
     const navigate = useNavigate()
 
-    const moveTest = () => {
-        navigate('../membertest')
+    const moveStoreSelect = () => {
+        navigate('/store/select')
     }
 
     const moveSignUp = () => {
@@ -22,7 +22,7 @@ const LoginPage = () => {
         <div>
             Login Page...
             <LoginComponent
-                moveTest={moveTest}
+                moveStoreSelect={moveStoreSelect}
                 moveSignUp={moveSignUp}
                 moveFindPw={moveFindPw}
             ></LoginComponent>

@@ -3,9 +3,10 @@ import { getCookie, setCookie } from "../../util/cookieUtil";
 import { postLogin } from "../../api/memberAPI";
 import { getMessaging, getToken } from "firebase/messaging";
 import { initializeApp } from "firebase/app";
-import { useNavigate } from "react-router-dom";
 
 // 파라미터 첫 번째는 이름, 두 번째는 함수(비동기 함수)
+
+
 export const postLoginThunk =
     createAsyncThunk('postLoginThunk', (params) => {
         return postLogin(params)
@@ -56,33 +57,7 @@ const loginSlice = createSlice({
     name: 'loginSlice',
     initialState: loadCookie(),
     reducers: {
-        // requestLogin: (state, param) => {
-        //     const payload = param.payload
 
-        //     console.log("state: ",state)
-        //     console.log("requestLogin: ", payload)
-
-        //     const loginObj = { memail: payload.memail, mname: payload.mname }
-
-        //     postLogin(payload).then(data => {
-
-        //         console.log("data", data)
-        //         console.log("data email", data.memail)
-        //         console.log("data name", data.mname)
-
-        //         loginObj.memail = data.memail
-        //         loginObj.mname = data.mname
-
-        //         setCookie("login", JSON.stringify(loginObj), 1)
-
-        //     }).catch(data => {
-        //         console.log(data)
-
-        //         loginObj = {initState}
-        //     })
-
-        //     return loginObj
-        // },
         requestLogout: (state) => {
             setCookie("login", '', -1);
             return initState;
