@@ -39,6 +39,7 @@ const RegistComponent = ({ moveStoreSelect }) => {
             console.log({...storeInfo, memail: memail})
             console.log("등록 완료")
             moveStoreSelect()
+            setStoreInfo(initState)
         })
     }
 

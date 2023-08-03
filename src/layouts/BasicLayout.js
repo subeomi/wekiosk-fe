@@ -17,7 +17,7 @@ const BasicLayout = ({ children }) => {
     const handleLogout = () => {
         dispatch(requestLogout())
         dispatch(storeChange())
-        navigate('../login')
+        navigate('/login')
     }
 
     const handleStoreChange = () => {
@@ -27,6 +27,7 @@ const BasicLayout = ({ children }) => {
 
     const handleDelStore = () => {
         delStore(sno).then(navigate('/store/select'))
+        dispatch(storeChange())
     }
 
     // mname과 memail이 유효한 값인지 확인
@@ -37,7 +38,7 @@ const BasicLayout = ({ children }) => {
             {/*  bg-opacity-90 */}
             <div className="min-w-[240px] min-h-screen bg-gray-100 flex flex-col items-center border-r-2">
                 <div className="px-4 py-3 border-b-2 h-[60px] w-full bg-white">
-                    <img src="img/logo.png" alt="logo" className="w-[200px]" />
+                    <img src="/img/logo.png" alt="logo" className="w-[200px]" />
                 </div>
                 <div className="px-4 py-2.5 bg-white border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer active:bg-[rgb(228,108,10)] active:text-white active:border-[rgb(228,108,10)]">
                     <span>매출현황</span>
@@ -90,6 +91,18 @@ const BasicLayout = ({ children }) => {
 
                 {isLoggedIn && (
                     <>
+                        <div className="w-full">
+                            <Link
+                                className={`${isActivePath("/modify/main")
+                                    ? "px-4 py-2.5 border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer bg-[rgb(228,108,10)] text-white border-[rgb(228,108,10)]"
+                                    : "px-4 py-2.5 bg-white border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer "}`}
+                                to={"/modify/main"}>
+                                정보수정
+                                <span className="flex justify-center">
+                                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                                </span>
+                            </Link>
+                        </div>
                         <div className="px-4 py-2.5 bg-white border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer active:bg-[rgb(228,108,10)] active:text-white active:border-[rgb(228,108,10)]"
                             onClick={handleStoreChange}>
                             <span>매장변경</span>
@@ -110,15 +123,8 @@ const BasicLayout = ({ children }) => {
                             </div>
                             <div className="flex flex-col self-center">
                                 <span className="font-bold text-lg">{mname}님</span>
-                                <span className="text-gray-400 text-sm">{sname}</span>
+                                <span className="text-gray-400 text-sm">{sname.length > 12 ? `${sname.slice(0, 12)}...` : sname}  </span>
                             </div>
-                        </div>
-                        <div className="px-4 py-2.5 bg-white border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer active:bg-[rgb(228,108,10)] active:text-white active:border-[rgb(228,108,10)]"
-                            onClick={handleDelStore}>
-                            <span>매장삭제</span>
-                            <span className="flex justify-center">
-                                <ion-icon name="log-out-outline"></ion-icon>
-                            </span>
                         </div>
                     </>
                 )}

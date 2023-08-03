@@ -44,3 +44,19 @@ export const putPw = async (params) => {
 
     return res.data
 }
+
+export const delMember = async (memail) => {
+
+    const res = await axios.delete(`http://localhost:8080/api/member/${memail}`)
+
+    return res.data
+}
+
+export const putStore = async (params) => {
+
+    const modifyData = {sno: params.sno, sname: params.sname, scontact: params.scontact, saddress: params.saddress}
+
+    const res = await axios.put('http://localhost:8080/api/store/modify', modifyData)
+
+    return res.data
+}

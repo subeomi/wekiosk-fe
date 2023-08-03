@@ -9,6 +9,11 @@ const Member_Login = lazy(() => import("../../pages/member/LoginPage"))
 const Member_SignUp = lazy(() => import("../../pages/member/SignUpPage"))
 const Member_Test = lazy(() => import("../../pages/member/TestPage"))
 const Member_FindPw = lazy(() => import("../../pages/member/FindPwPage"))
+const Member_ChangePw = lazy(() => import("../../pages/member/ChangePwPage"))
+
+const Modify_Index = lazy(() => import("../../pages/member/ModifyIndexPage"))
+const Modify_Main = lazy(() => import("../../pages/member/ModifyMainPage"))
+const Modify_Store = lazy(() => import("../../pages/member/StoreModifyPage"))
 
 const Store_Index = lazy(() => import("../../pages/stores/IndexPage"))
 const Store_Selete = lazy(() => import("../../pages/stores/SelectPage"))
@@ -33,6 +38,24 @@ const router = createBrowserRouter([
     {
         path: "findpw",
         element: <Suspense fallback={Loading}><Member_FindPw/></Suspense>
+    },
+    {
+        path: "changepw",
+        element: <Suspense fallback={Loading}><Member_ChangePw/></Suspense>
+    },
+    {
+        path: "modify",
+        element: <Suspense fallback={Loading}><Modify_Index/></Suspense>,
+        children: [
+            {
+                path: "main",
+                element: <Suspense fallback={Loading}><Modify_Main/></Suspense>
+            },
+            {
+                path: "store",
+                element: <Suspense fallback={Loading}><Modify_Store/></Suspense>
+            }
+        ]
     },
     {
         path: "store",

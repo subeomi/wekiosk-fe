@@ -1,9 +1,5 @@
 import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { postLoginThunk, requestLogin, requestLogout } from "../../reducers/member/loginSlice"
-import { useNavigate } from "react-router-dom"
 import { duplicateCheck, emailConfirm, postRegist } from "../../api/memberAPI"
-import axios from "axios"
 
 const initState = {
     memail: '',
@@ -21,8 +17,6 @@ const initState = {
 const SignUpComponent = ({ moveLogin }) => {
 
     const [signupInfo, setSignupInfo] = useState({ ...initState })
-
-    const dispatch = useDispatch()
 
 
     const handleChange = (e) => {
