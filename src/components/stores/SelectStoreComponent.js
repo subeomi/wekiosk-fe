@@ -53,10 +53,10 @@ const SelectComponent = ({ moveStoreRegist, moveTest }) => {
                                 onClick={() => handleSelectStore(store.sno)}
                             >
                                 <p className="p-2 text-2xl font-bold text-[rgb(228,108,10)] flex justify-center">
-                                    {store.sname}
+                                {store.sname.length > 12 ? `${store.sname.slice(0, 12)}...` : store.sname}  
                                 </p>
                                 <div className="text-gray-400">
-                                    <p>{store.saddress}</p>
+                                    <p>{store.saddress.length > 19 ? `${store.saddress.slice(0, 19)}...` : store.saddress}</p>
                                     <p>{store.scontact}</p>
                                 </div>
                             </div>
