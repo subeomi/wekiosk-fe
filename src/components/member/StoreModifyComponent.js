@@ -55,7 +55,7 @@ const StoreModifyComponent = ({ moveModifyMain }) => {
             <div className="flex flex-col justify-center items-center p-4">
                 <div className="mx-2 p-2 text-4xl font-extrabold cursor-pointer flex items-center mb-2">
                     <div>
-                        <img src="img/logo.png" alt="logo" className="w-[440px]" />
+                        <img src="/img/logo.png" alt="logo" className="w-[440px]" />
                     </div>
                 </div>
                 <div className="border-2 p-4 rounded-2xl min-w-[450px] flex flex-col justify-center items-center">

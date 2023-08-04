@@ -1,16 +1,18 @@
 import axios from "axios"
 
+const path = "https://192.168.0.29:8443/api/"
+
 
 export const postLogin = async (params) => {
 
-    const res = await axios.post('http://localhost:8080/api/member/login', params)
+    const res = await axios.post(path+'member/login', params)
 
     return res.data
 }
 
 export const duplicateCheck = async (memail) => {
 
-    const res = await axios.get(`http://localhost:8080/api/member/duplicate/${memail}`)
+    const res = await axios.get(path+`member/duplicate/${memail}`)
 
     return res.data
 }
@@ -22,7 +24,7 @@ export const emailConfirm = async (param) => {
     const form = new FormData()
     form.append('memail', param)
 
-    const res = await axios.post('http://localhost:8080/api/member/emailConfirm', form, header)
+    const res = await axios.post(path+'member/emailConfirm', form, header)
 
     return res.data
 }
@@ -31,7 +33,7 @@ export const postRegist = async (params) => {
 
     const registData = {memail: params.memail, mname: params.mname, mpw: params.mpw}
 
-    const res = await axios.post('http://localhost:8080/api/member/regist', registData)
+    const res = await axios.post(path+'member/regist', registData)
 
     return res.data
 }
@@ -40,14 +42,14 @@ export const putPw = async (params) => {
 
     const modifyData = {memail: params.memail, mpw: params.mpw}
 
-    const res = await axios.put('http://localhost:8080/api/member/pw', modifyData)
+    const res = await axios.put(path+'member/pw', modifyData)
 
     return res.data
 }
 
 export const delMember = async (memail) => {
 
-    const res = await axios.delete(`http://localhost:8080/api/member/${memail}`)
+    const res = await axios.delete(path+`member/${memail}`)
 
     return res.data
 }
@@ -56,7 +58,7 @@ export const putStore = async (params) => {
 
     const modifyData = {sno: params.sno, sname: params.sname, scontact: params.scontact, saddress: params.saddress}
 
-    const res = await axios.put('http://localhost:8080/api/store/modify', modifyData)
+    const res = await axios.put(path+'store/modify', modifyData)
 
     return res.data
 }

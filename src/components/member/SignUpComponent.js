@@ -105,7 +105,7 @@ const SignUpComponent = ({ moveLogin }) => {
             <div className="flex flex-col justify-center items-center p-4">
                 <div className="mx-2 p-2 text-4xl font-extrabold cursor-pointer flex items-center mb-2">
                     <div>
-                        <img src="img/logo.png" alt="logo" className="w-[440px]" onClick={moveLogin} />
+                        <img src="/img/logo.png" alt="logo" className="w-[440px]" onClick={moveLogin} />
                     </div>
                 </div>
 

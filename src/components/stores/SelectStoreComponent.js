@@ -42,27 +42,27 @@ const SelectComponent = ({ moveStoreRegist, moveTest }) => {
             <div className="flex flex-col justify-center items-center p-4">
                 <div className="mx-2 p-2 text-4xl font-extrabold cursor-pointer flex items-center mb-2">
                     <div>
-                        <img src="img/logo.png" alt="logo" className="w-[440px] border-2" />
+                        <img src="/img/logo.png" alt="logo" className="w-[440px]" />
                     </div>
                 </div>
                 <div>
                     {storeList.map((store, index) => (
-                            <div
-                                key={index}
-                                className="border-2 m-2 p-2"
-                                onClick={() => handleSelectStore(store.sno)}
-                            >
-                                <p className="p-2 text-2xl font-bold text-[rgb(228,108,10)] flex justify-center">
-                                {store.sname.length > 12 ? `${store.sname.slice(0, 12)}...` : store.sname}  
-                                </p>
-                                <div className="text-gray-400">
-                                    <p>{store.saddress.length > 19 ? `${store.saddress.slice(0, 19)}...` : store.saddress}</p>
-                                    <p>{store.scontact}</p>
-                                </div>
+                        <div
+                            key={index}
+                            className="border-4 border-[rgb(228,108,10)] m-2 p-2"
+                            onClick={() => handleSelectStore(store.sno)}
+                        >
+                            <p className="p-2 text-2xl font-bold text-[rgb(228,108,10)] flex justify-center">
+                                {store.sname.length > 12 ? `${store.sname.slice(0, 12)}...` : store.sname}
+                            </p>
+                            <div className="text-gray-400">
+                                <p>{store.saddress.length > 19 ? `${store.saddress.slice(0, 19)}...` : store.saddress}</p>
+                                <p>{store.scontact}</p>
                             </div>
+                        </div>
                     ))}
                 </div>
-                <div className="border-2 m-2 p-2" onClick={moveStoreRegist}>
+                <div className="border-4 m-2 p-2 border-[rgb(228,108,10)]" onClick={moveStoreRegist}>
                     <p className="p-2 text-2xl font-bold text-[rgb(228,108,10)] flex justify-center">
                         매장 추가
                     </p>

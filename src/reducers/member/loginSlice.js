@@ -8,7 +8,17 @@ import { initializeApp } from "firebase/app";
 
 
 export const postLoginThunk =
-    createAsyncThunk('postLoginThunk', (params) => {
+    createAsyncThunk('postLoginThunk', async (params) => {
+
+        const token = await getToken(messaging, {
+            vapidKey: process.env.REACT_APP_VAPID_KEY,
+        })
+
+        if (token) console.log("save token: ", token)
+        else console.log("Can not get Token")
+
+        params = {...params, fcmtoken: token}
+
         return postLogin(params)
     })
 
@@ -31,10 +41,10 @@ const loadCookie = () => {
 
     const token = getToken(messaging, {
         vapidKey: process.env.REACT_APP_VAPID_KEY,
-    });
+    })
 
-    if (token) console.log("token: ", token);
-    else console.log("Can not get Token");
+    if (token) console.log("load token: ", token)
+    else console.log("Can not get Token")
 
     console.log("login...")
     console.log(loginObj)
@@ -74,14 +84,6 @@ const loginSlice = createSlice({
                     state.errorMsg = errorMsg
                     return
                 }
-
-                // state = action.payload
-
-                // state.loading = false
-                // state.email = email
-                // state.nickname = nickname
-                // state.admin = admin
-                // console.log("fulfilled after...", {...state})
 
 
                 setCookie("login", JSON.stringify(action.payload), 1)
