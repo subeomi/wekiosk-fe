@@ -1,11 +1,18 @@
 import axios from "axios"
+import jwtAxios from "../util/jwtUtil"
 
 const path = "https://192.168.0.29:8443/api/"
 
 
 export const postLogin = async (params) => {
 
-    const res = await axios.post(path+'member/login', params)
+    const header = {headers: {"Content-Type": "application/x-www-form-urlencoded"}}
+
+    const form = new FormData()
+    form.append('username', params.memail)
+    form.append('password', params.mpw)
+
+    const res = await axios.post(path+'member/login', form, header)
 
     return res.data
 }
@@ -49,7 +56,7 @@ export const putPw = async (params) => {
 
 export const delMember = async (memail) => {
 
-    const res = await axios.delete(path+`member/${memail}`)
+    const res = await jwtAxios.delete(path+`member/delete/${memail}`)
 
     return res.data
 }
@@ -58,7 +65,7 @@ export const putStore = async (params) => {
 
     const modifyData = {sno: params.sno, sname: params.sname, scontact: params.scontact, saddress: params.saddress}
 
-    const res = await axios.put(path+'store/modify', modifyData)
+    const res = await jwtAxios.put(path+'store/modify', modifyData)
 
     return res.data
 }

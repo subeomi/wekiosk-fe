@@ -12,6 +12,7 @@ const initState = {
 
 const RegistComponent = ({ moveStoreSelect }) => {
 
+    const loginInfo = useSelector(state => state.login)
     const [storeInfo, setStoreInfo] = useState(initState)
     const { memail } = useSelector(state => state.login)
 
@@ -35,8 +36,8 @@ const RegistComponent = ({ moveStoreSelect }) => {
 
     const handleClickRegist = () => {
 
-        postRegistStore({...storeInfo, memail: memail}).then(data => {
-            console.log({...storeInfo, memail: memail})
+        postRegistStore({...storeInfo, memail: memail, accessToken: loginInfo.accessToken}).then(data => {
+            console.log({...storeInfo, memail: memail, accessToken: loginInfo.accessToken})
             console.log("등록 완료")
             moveStoreSelect()
             setStoreInfo(initState)

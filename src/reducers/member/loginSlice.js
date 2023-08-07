@@ -59,7 +59,8 @@ const loadCookie = () => {
 const initState = {
     memail: '',
     mname: '',
-    mgrade: 0,
+    accessToken: '',
+    refreshToken: '',
     errorMsg: null
 }
 

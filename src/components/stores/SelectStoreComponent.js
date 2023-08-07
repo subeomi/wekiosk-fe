@@ -5,15 +5,15 @@ import { selectStoreThunk } from "../../reducers/member/storeSlice"
 
 const SelectComponent = ({ moveStoreRegist, moveTest }) => {
 
-    const { memail } = useSelector(state => state.login)
+    const loginInfo = useSelector(state => state.login)
     const [storeList, setStoreList] = useState([])
     const dispatch = useDispatch()
 
     useEffect(() => {
 
-        getStoreList(memail).then(data => {
+        getStoreList(loginInfo).then(data => {
 
-            console.log(data)
+            console.log("D A T A : ", data)
             setStoreList(data)
         }).catch(err => {
 
@@ -22,7 +22,7 @@ const SelectComponent = ({ moveStoreRegist, moveTest }) => {
             console.log("======================")
         })
 
-    }, [storeList.length, memail])
+    }, [storeList.length, loginInfo.memail])
 
     const handleSelectStore = (sno) => {
         dispatch(selectStoreThunk(sno))

@@ -8,6 +8,8 @@ const TestComponent = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
+    console.log(loginState)
+
     const handleLogout = () => {
         dispatch(requestLogout())
         navigate('../login')
