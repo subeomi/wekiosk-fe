@@ -58,11 +58,17 @@ const BasicLayout = ({ children }) => {
                         <ion-icon name="chevron-forward-outline"></ion-icon>
                     </span>
                 </div>
-                <div className="px-4 py-2.5 bg-white border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer active:bg-[rgb(228,108,10)] active:text-white active:border-[rgb(228,108,10)]">
-                    <span>디바이스</span>
-                    <span className="flex justify-center">
-                        <ion-icon name="chevron-forward-outline"></ion-icon>
-                    </span>
+                <div className="w-full">
+                    <Link
+                        className={`${isActivePath("/device/list")
+                            ? "px-4 py-2.5 border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer bg-[rgb(228,108,10)] text-white border-[rgb(228,108,10)]"
+                            : "px-4 py-2.5 bg-white border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer "}`}
+                        to={"/device/list"}>
+                        디바이스
+                        <span className="flex justify-center">
+                            <ion-icon name="chevron-forward-outline"></ion-icon>
+                        </span>
+                    </Link>
                 </div>
                 <div className="w-full">
                     <Link

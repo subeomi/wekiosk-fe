@@ -22,6 +22,9 @@ const Store_Regist = lazy(() => import("../../pages/stores/RegistPage"))
 const Faq_Index = lazy(() => import("../../pages/faq/IndexPage"))
 const Faq_List = lazy(() => import("../../pages/faq/ListPage"))
 
+const Device_Index = lazy(() => import("../../pages/device/IndexPage"))
+const Device_List = lazy(() => import("../../pages/device/ListPage"))
+
 const router = createBrowserRouter([
     {
         path: "login",
@@ -78,6 +81,16 @@ const router = createBrowserRouter([
             {
                 path: "list",
                 element: <Suspense fallback={Loading}><Faq_List/></Suspense>
+            }
+        ]
+    },
+    {
+        path: "device",
+        element: <Suspense fallback={Loading}><Device_Index/></Suspense>,
+        children: [
+            {
+                path: "list",
+                element: <Suspense fallback={Loading}><Device_List/></Suspense>
             }
         ]
     }

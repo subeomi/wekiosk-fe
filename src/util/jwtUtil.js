@@ -6,7 +6,7 @@ const jwtAxios = axios.create()
 
 const beforeReq = (config) => {
     
-    console.log("before Request...")
+    // console.log("before Request...")
 
     const {accessToken} = getCookie("login")
 
@@ -28,7 +28,7 @@ const requestFail = (err) => {
 
 const beforeRes = async (res) => {
 
-    console.log("2xx Response...")
+    // console.log("2xx Response...")
 
     if(res.data.error === 'Expired'){
 
@@ -38,6 +38,8 @@ const beforeRes = async (res) => {
         const originalRequest = res.config
 
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`
+
+        console.log('new access', originalRequest)
 
         return await axios(originalRequest)
     }
