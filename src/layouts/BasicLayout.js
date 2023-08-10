@@ -1,16 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
-import { requestLogout } from "../reducers/member/loginSlice";
+import { requestLogout, updateFcmtoken } from "../reducers/member/loginSlice";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { storeChange } from "../reducers/member/storeSlice";
 import { delStore } from "../api/storeAPI";
+import { useEffect, useState } from "react";
+import { putFcmtoken } from "../api/memberAPI";
+import { getMessaging, getToken } from "firebase/messaging";
+import { initializeApp } from "firebase/app";
+import NoticeNav from "./NoticeNav";
 
 const BasicLayout = ({ children }) => {
 
-    const { memail, mname } = useSelector(state => state.login)
+    const loginInfo = useSelector(state => state.login)
     const { sname, sno } = useSelector(state => state.store)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const location = useLocation()
+
 
     const isActivePath = (path) => location.pathname === path
 
@@ -25,13 +31,13 @@ const BasicLayout = ({ children }) => {
         navigate('/store/select')
     }
 
-    const handleDelStore = () => {
-        delStore(sno).then(navigate('/store/select'))
-        dispatch(storeChange())
-    }
+    // const handleDelStore = () => {
+    //     delStore(sno).then(navigate('/store/select'))
+    //     dispatch(storeChange())
+    // }
 
     // mname과 memail이 유효한 값인지 확인
-    const isLoggedIn = mname && memail;
+    const isLoggedIn = loginInfo.mname && loginInfo.memail;
 
     return (
         <div className="flex">
@@ -128,10 +134,12 @@ const BasicLayout = ({ children }) => {
                                 <ion-icon name="person-circle-sharp"></ion-icon>
                             </div>
                             <div className="flex flex-col self-center">
-                                <span className="font-bold text-lg">{mname}님</span>
+                                <span className="font-bold text-lg">{loginInfo.mname}님</span>
                                 <span className="text-gray-400 text-sm">{sname.length > 12 ? `${sname.slice(0, 12)}...` : sname}  </span>
                             </div>
+
                         </div>
+                        <NoticeNav loginInfo={loginInfo}></NoticeNav>
                     </>
                 )}
 

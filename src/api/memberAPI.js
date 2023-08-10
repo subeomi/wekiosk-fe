@@ -69,3 +69,17 @@ export const putStore = async (params) => {
 
     return res.data
 }
+
+
+export const putFcmtoken = async (params) => {
+
+    const header = {headers: {"Content-Type": "application/json"}}
+
+    const modifyData = {memail: params.memail, fcmtoken: params.fcmtoken}
+
+    console.log("modifyData: ",modifyData)
+
+    const res = await jwtAxios.put(path+'member/fcmtoken', modifyData, header)
+
+    return res.data
+}

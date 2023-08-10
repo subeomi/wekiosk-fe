@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { getCategoryList, getList, getProductList } from "../../api/deviceAPI";
+import { getCategoryList, getCategoryListBySno, getList, getProductList } from "../../api/deviceAPI";
 import OrderComponent from "./OrderComponent";
 import PaymentComponent from "./PaymentComponent";
 
@@ -20,7 +20,7 @@ const ListComponent = () => {
 
     useEffect(() => {
 
-        getCategoryList().then(data => {
+        getCategoryListBySno(storeInfo.sno).then(data => {
 
             setCategory(data)
 
@@ -38,9 +38,11 @@ const ListComponent = () => {
 
     console.log("cart: ", cart)
 
+    console.log("category: ", category)
+
     const calculateTotalPrice = () => {
         const total = cart.reduce((accumulator, currentItem) => {
-            return accumulator + currentItem.pprice;
+            return accumulator + currentItem.sumpprice;
         }, 0)
         return total
     }
@@ -68,7 +70,7 @@ const ListComponent = () => {
                     {category.map(ca => (
                         <div
                             key={ca.cateno}
-                            className={`text-2xl p-2 font-bold ${target === ca.cateno ? 'text-gray-800' : 'text-gray-300'} ${target === ca.cateno ? 'active:text-gray-800' : ''}`}
+                            className={`text-3xl p-2 mr-4 font-bold ${target === ca.cateno ? 'text-gray-800' : 'text-gray-300'} ${target === ca.cateno ? 'active:text-gray-800' : ''}`}
                             onClick={() =>
                                 setTarget(ca.cateno)
                             }

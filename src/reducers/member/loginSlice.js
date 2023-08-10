@@ -17,7 +17,7 @@ export const postLoginThunk =
         if (token) console.log("save token: ", token)
         else console.log("Can not get Token")
 
-        params = {...params, fcmtoken: token}
+        params = { ...params, fcmtoken: token }
 
         return postLogin(params)
     })
@@ -61,7 +61,8 @@ const initState = {
     mname: '',
     accessToken: '',
     refreshToken: '',
-    errorMsg: null
+    errorMsg: null,
+    fcmtoken: null
 }
 
 const loginSlice = createSlice({
@@ -72,6 +73,9 @@ const loginSlice = createSlice({
         requestLogout: (state) => {
             setCookie("login", '', -1);
             return initState;
+        },
+        updateFcmtoken: (state, action) => {
+            state.fcmtoken = action.payload.fcmtoken
         }
 
     },
@@ -79,13 +83,22 @@ const loginSlice = createSlice({
         builder
             .addCase(postLoginThunk.fulfilled, (state, action) => {
                 console.log("fulfilled", action.payload)
-                const { memail, mname, mgrade, errorMsg } = action.payload
+                const { errorMsg, fcmtoken, ...restPayload } = action.payload
 
                 if (errorMsg) {
                     state.errorMsg = errorMsg
                     return
                 }
 
+                if (!fcmtoken) {
+                    setCookie("login", JSON.stringify(action.payload), 1)
+
+                    console.log("login slice action: ", action.payload)
+
+                    return { ...restPayload, loading: false, fcmtoken: null }
+                }
+
+                console.log("login slice action: ", action.payload)
 
                 setCookie("login", JSON.stringify(action.payload), 1)
 
@@ -101,12 +114,12 @@ const loginSlice = createSlice({
             .addCase('loginSlice/requestLogout', (state, action) => {
                 setCookie("login", '', -1); // 쿠키 삭제
                 return initState; // 초기 상태로 돌아감
-            });
+            })
     }
 
 })
 
-// 더 이상 필요가 없음
-export const { requestLogout, requestLogin } = loginSlice.actions
+
+export const { requestLogout, requestLogin, updateFcmtoken } = loginSlice.actions
 
 export default loginSlice.reducer

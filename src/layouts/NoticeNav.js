@@ -1,9 +1,9 @@
-import { initializeApp } from "firebase/app";
-import { getMessaging, getToken } from "firebase/messaging";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { Outlet } from "react-router-dom";
-import { putFcmtoken } from "../../api/memberAPI";
+import { getMessaging, getToken } from "firebase/messaging"
+import { useEffect, useState } from "react"
+import { putFcmtoken } from "../api/memberAPI"
+import { useDispatch } from "react-redux"
+import { updateFcmtoken } from "../reducers/member/loginSlice"
+import { initializeApp } from "firebase/app"
 
 const firebaseConfig = {
     apiKey: "AIzaSyDllwTmvwZ0UeaSalOC8EL0ZXu6JqouZZs",
@@ -18,9 +18,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const messaging = getMessaging(app);
 
-const IndexPage = () => {
+const NoticeNav = ({ loginInfo }) => {
 
-    const loginInfo = useSelector(state => state.login)
+    const [notifiModal, setNotifiModal] = useState(false)
+    const [fcmtoken, setFcmtoken] = useState({})
+    const dispatch = useDispatch()
+
+    console.log("notice nav: ", loginInfo)
 
     useEffect(() => {
 
@@ -28,24 +32,25 @@ const IndexPage = () => {
             vapidKey: process.env.REACT_APP_VAPID_KEY,
         }).then(data => {
 
-            const fcmData = { memail: loginInfo.memail, fcmtoken: null }
+            const fcmData = {memail: loginInfo.memail, fcmtoken: data}
+            setFcmtoken({ data })
             putFcmtoken(fcmData).then(data => {
                 console.log('ddddddddddddddddddddddddddddddddddddddddddddd')
             })
             // dispatch(updateFcmtoken({ fcmtoken: fcmtoken.data }))
         })
 
+        console.log("result: ", loginInfo.fcmtoken)
 
     }, [loginInfo.fcmtoken])
 
-    console.log("result: ", loginInfo.fcmtoken)
-    
+
+
     return (
-        <div>
-            Device Index Page...
-            <Outlet></Outlet>
-        </div>
+        <>
+
+        </>
     );
 }
 
-export default IndexPage;
+export default NoticeNav;
