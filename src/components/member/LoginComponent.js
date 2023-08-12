@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { postLoginThunk, requestLogin, requestLogout } from "../../reducers/member/loginSlice"
+import KakaoLoginComponent from "./KakaoLoginComponent"
 
 const initState = {
     memail: 'lsbz@kiosk.com',
@@ -84,6 +85,7 @@ const LoginComponent = ({ moveStoreSelect, moveSignUp, moveFindPw }) => {
                             onClick={handleLogin}
                         >로그인</button>
                     </div>
+                    <KakaoLoginComponent></KakaoLoginComponent>
                 </div>
                 <div className="text-sm text-gray-400 mt-4 flex">
                     <div className="px-5 border-r-2">

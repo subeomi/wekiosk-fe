@@ -69,7 +69,25 @@ const loginSlice = createSlice({
     name: 'loginSlice',
     initialState: loadCookie(),
     reducers: {
+        requestLogin: (state, param) => {
+            const payload = param.payload
+            console.log("requestLogin", payload)
+            const { errorMsg, fcmtoken, ...restPayload } = payload
 
+            if (!fcmtoken) {
+                setCookie("login", JSON.stringify(payload), 1)
+
+                console.log("login slice action: ", payload)
+
+                return { ...payload, fcmtoken: null }
+            }
+
+            console.log("login slice action: ", payload)
+
+            setCookie("login", JSON.stringify(payload), 1)
+
+            return { ...payload}
+        },
         requestLogout: (state) => {
             setCookie("login", '', -1);
             return initState;

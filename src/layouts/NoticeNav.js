@@ -37,7 +37,7 @@ const NoticeNav = ({ loginInfo }) => {
             putFcmtoken(fcmData).then(data => {
                 console.log('ddddddddddddddddddddddddddddddddddddddddddddd')
             })
-            // dispatch(updateFcmtoken({ fcmtoken: fcmtoken.data }))
+            dispatch(updateFcmtoken({ fcmtoken: fcmtoken.data }))
         })
 
         console.log("result: ", loginInfo.fcmtoken)

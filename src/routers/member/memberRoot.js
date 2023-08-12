@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import LoginPage from "../../pages/member/LoginPage";
 import LoadingPage from "../../pages/LoadingPage";
 import { Suspense, lazy } from "react";
+import KakaoRedirectPage from "../../pages/member/KakaoRedirectPage";
 
 const Loading = <LoadingPage></LoadingPage>
 
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
     {
         path: "login",
         element: <Suspense fallback={Loading}><Member_Login/></Suspense>
+    },
+    {
+        path: "login/kakao",
+        element: <KakaoRedirectPage></KakaoRedirectPage>
     },
     {
         path: "membertest",
