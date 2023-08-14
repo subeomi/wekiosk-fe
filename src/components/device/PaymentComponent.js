@@ -1,4 +1,6 @@
-const PaymentComponent = ({ setPaymentModal, cart, setCart, calculateTotalPrice }) => {
+import { postOrder, postPayment, postPaymentFcm } from "../../api/deviceAPI"
+
+const PaymentComponent = ({ setPaymentModal, cart, setCart, calculateTotalPrice, sno, email }) => {
 
     console.log("payment cart: ", cart)
 
@@ -22,6 +24,35 @@ const PaymentComponent = ({ setPaymentModal, cart, setCart, calculateTotalPrice 
         updatedCart[index].sumpprice = updatedCart[index].pprice * updatedCart[index].quantity
 
         setCart(updatedCart)
+    }
+
+    const orderMain = {
+        sno: sno,
+        details: [...cart]
+    }
+
+    console.log(email)
+
+    const handlePayment = () => {
+        postOrder(orderMain).then(data => {
+            console.log("ono: ", data)
+            const paymentMain = {
+                ono: data,
+                total_price: calculateTotalPrice(),
+                pay_method: '카드'
+            }
+
+            postPayment(paymentMain).then(payno => {
+                postPaymentFcm(email)
+                console.log("payno: ",payno)
+                closePaymentModal()
+                setCart([])
+            })
+
+        }).catch(err => {
+            console.log(err)
+            console.log(cart)
+        })
     }
 
 
@@ -63,16 +94,16 @@ const PaymentComponent = ({ setPaymentModal, cart, setCart, calculateTotalPrice 
                                     {item.pname}
                                 </span>
 
-                                {/* {item.option.map((op, opIndex) => (
+                                {/* {item.options.map((op, opIndex) => (
                                     <span key={op.ord} className="text-gray-400">
                                         {opIndex === 0 ? "/" : ", "}
                                         {op.oname.length > 25 ? op.oname.slice(0, 25) + "..." : op.oname}
                                     </span>
                                 ))} */}
 
-                                {item.option.length > 0 && (
+                                {item.options.length > 0 && (
                                     <span className="text-gray-400">
-                                        /{item.option[0].oname} 외 {item.option.length}종
+                                        /{item.options[0].oname} 외 {item.options.length}종
                                     </span>
                                 )}
                             </div>
@@ -105,7 +136,7 @@ const PaymentComponent = ({ setPaymentModal, cart, setCart, calculateTotalPrice 
                 <div className="absolute bottom-0 w-full">
                     <div
                         className="flex justify-center items-center bg-[rgb(228,108,10)] text-2xl text-white font-bold py-4 h-[80px]"
-                    // onClick={handleClickOrder}
+                    onClick={handlePayment}
                     >
                         \{calculateTotalPrice().toLocaleString()} 결제하기
                     </div>

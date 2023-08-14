@@ -2,10 +2,10 @@ import { useEffect, useState } from "react"
 import { getOptionList } from "../../api/deviceAPI"
 
 const initState = {
-    // pno: 0,
+    pno: 0,
     pname: '',
     pprice: 0,
-    option: [],
+    options: [],
     sumpprice: 0,
     quantity: 1
 }
@@ -26,7 +26,7 @@ const OrderComponent = ({ setOrderModal, orderModal, setCart, cart }) => {
         getOptionList(pno).then(data => {
             setOptions(data)
 
-            setCartItem({ ...cartItem, pprice: pprice, pname: pname, sumpprice: pprice })
+            setCartItem({ ...cartItem, pprice: pprice, pname: pname, sumpprice: pprice, pno: pno })
         })
 
     }, [pno])
@@ -50,16 +50,16 @@ const OrderComponent = ({ setOrderModal, orderModal, setCart, cart }) => {
         })
     }
 
-    const handleOptionClick = (option) => {
-        const updatedOptions = cartItem.option.includes(option)
-            ? cartItem.option.filter(item => item !== option)
-            : [...cartItem.option, option];
+    const handleOptionClick = (options) => {
+        const updatedOptions = cartItem.options.includes(options)
+            ? cartItem.options.filter(item => item !== options)
+            : [...cartItem.options, options];
 
         const updatedPrice = updatedOptions.reduce((sum, opt) => sum + opt.oprice, pprice);
 
         setCartItem({
             ...cartItem,
-            option: updatedOptions,
+            options: updatedOptions,
             pprice: updatedPrice,
             sumpprice: updatedPrice * cartItem.quantity
         })
@@ -70,7 +70,7 @@ const OrderComponent = ({ setOrderModal, orderModal, setCart, cart }) => {
         closeProductModal()
     }
 
-    console.log("cart item option: ", cartItem.option)
+    console.log("cart item options: ", cartItem.options)
 
     return (
         <div className="fixed z-[51] top-0 left-0 w-full h-full flex items-center justify-center bg-gray-300 bg-opacity-70" onClick={closeProductModal}>

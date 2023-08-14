@@ -8,6 +8,7 @@ import PaymentComponent from "./PaymentComponent";
 
 const ListComponent = () => {
 
+    const loginInfo = useSelector(state => state.login)
     const storeInfo = useSelector(state => state.store)
     const [orderModal, setOrderModal] = useState('')
     const [paymentModal, setPaymentModal] = useState(false)
@@ -125,7 +126,10 @@ const ListComponent = () => {
                     calculateTotalPrice={calculateTotalPrice}
                     setPaymentModal={setPaymentModal}
                     setCart={setCart}
-                    cart={cart}></PaymentComponent>
+                    cart={cart}
+                    sno={storeInfo.sno}
+                    email={loginInfo.memail}
+                    ></PaymentComponent>
             )}
         </div>
     );

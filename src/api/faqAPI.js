@@ -3,6 +3,7 @@ import { createSearchParams } from "react-router-dom";
 import jwtAxios from "../util/jwtUtil";
 
 
+// const path = "https://localhost:8443/api/"
 const path = "https://192.168.0.29:8443/api/"
 
 export const getList = async (queryObj) => {

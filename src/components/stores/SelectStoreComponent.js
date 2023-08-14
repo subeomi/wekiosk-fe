@@ -40,9 +40,13 @@ const SelectComponent = ({ moveStoreRegist, moveTest }) => {
 
         <div>
             <div className="flex flex-col justify-center items-center p-4">
-                <div className="mx-2 p-2 text-4xl font-extrabold cursor-pointer flex items-center mb-2">
+                <div className="mx-2 p-2 text-4xl font-extrabold flex items-center mb-2">
                     <div>
-                        <img src="/img/logo.png" alt="logo" className="w-[440px]" />
+                        <img src="/img/logo.png" alt="logo" className="w-[440px]  cursor-pointer" />
+
+                        <span className="text-[rgb(228,108,10)] text-2xl flex justify-center mt-3">
+                            {loginInfo.mname}님, 안녕하세요?
+                        </span>
                     </div>
                 </div>
                 <div>
