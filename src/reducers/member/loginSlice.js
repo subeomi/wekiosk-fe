@@ -135,7 +135,7 @@ const loginSlice = createSlice({
                 return initState; // 초기 상태로 돌아감
             })
     }
-
+})
 
 
 
