@@ -47,7 +47,7 @@ const useQueryObj = () => {
     const queryString = createSearchParams(queryObj).toString()
 
     navigate(`../read/${bno}?${queryString}`)
-
+  }
 
   const moveMain = () => {
     navigate("/");
@@ -58,6 +58,6 @@ const useQueryObj = () => {
 
   return { queryObj, setSearch, moveRead, moveList, moveMain }
 }
-}
+
 
 export default useQueryObj

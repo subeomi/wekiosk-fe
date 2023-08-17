@@ -6,12 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store/store';
-import Prouter from './routers/payment/paymentRoot';
+import router from './routers/root';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <RouterProvider router={Prouter}>
+    <RouterProvider router={router}>
       <App />
     </RouterProvider>
   </Provider>

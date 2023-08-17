@@ -7,8 +7,8 @@ import paymentSlice from "../reducers/payment/paymentSlice";
 
 export default configureStore({
     reducer: {
-        // login: loginSlice,
-        // store: storeSlice,
+        login: loginSlice,
+        store: storeSlice,
         payment: paymentSlice,
         detail: detailSlice
     },
