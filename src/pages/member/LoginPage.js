@@ -1,13 +1,32 @@
+import { useNavigate } from "react-router-dom";
 import LoginComponent from "../../components/member/LoginComponent";
 import BasicLayout from "../../layouts/BasicLayout";
 
 const LoginPage = () => {
-    return (
 
-            <BasicLayout>
-                Login Page...
-                <LoginComponent />
-            </BasicLayout>
+    const navigate = useNavigate()
+
+    const moveStoreSelect = () => {
+        navigate('/store/select')
+    }
+
+    const moveSignUp = () => {
+        navigate('../signup')
+    }
+
+    const moveFindPw = () => {
+        navigate('../findpw')
+    }
+
+    return (
+        <div>
+            Login Page...
+            <LoginComponent
+                moveStoreSelect={moveStoreSelect}
+                moveSignUp={moveSignUp}
+                moveFindPw={moveFindPw}
+            ></LoginComponent>
+        </div>
 
     );
 }

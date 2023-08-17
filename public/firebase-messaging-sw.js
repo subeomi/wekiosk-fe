@@ -8,7 +8,7 @@ self.addEventListener("install", function (e) {
   });
   
   self.addEventListener("push", function (e) {
-    console.log("push: ", e.data.json());
+    // console.log("push: ", e.data.json());
     if (!e.data.json()) return;
   
     const resultData = e.data.json().data;
