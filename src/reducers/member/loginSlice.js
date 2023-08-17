@@ -1,3 +1,4 @@
+
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getCookie, setCookie } from "../../util/cookieUtil";
 import { postLogin } from "../../api/memberAPI";
@@ -135,7 +136,7 @@ const loginSlice = createSlice({
             })
     }
 
-})
+
 
 
 export const { requestLogout, requestLogin, updateFcmtoken } = loginSlice.actions

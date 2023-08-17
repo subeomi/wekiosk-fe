@@ -18,31 +18,36 @@ const checkNull = (obj) => {
 
 const useQueryObj = () => {
 
-  const [search, setSearch] = useSearchParams()
+
+  const [search, setSearch] = useSearchParams() // 쿼리스트링 수집 후 객체로 만듬
   const navigate = useNavigate()
 
-  console.log(search)
-
   const page = search.get("page") || 1
-  const size = search.get("size") || 10
+  const size = search.get("size") || 5
+
   const type = search.get("type")
   const keyword = search.get("keyword")
 
   const queryObj = checkNull({ page, size, type, keyword })
 
   const moveList = () => {
+
+
     const queryString = createSearchParams(queryObj).toString()
 
     navigate(`../list?${queryString}`)
+
   }
 
   const moveRead = (bno) => {
+
+
     console.log("moveRead: " + bno)
 
     const queryString = createSearchParams(queryObj).toString()
 
     navigate(`../read/${bno}?${queryString}`)
-  }
+
 
   const moveMain = () => {
     navigate("/");

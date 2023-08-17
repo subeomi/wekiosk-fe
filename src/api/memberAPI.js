@@ -5,6 +5,7 @@ import jwtAxios from "../util/jwtUtil"
 const path = "https://192.168.0.29:8443/api/"
 
 
+
 export const postLogin = async (params) => {
 
     const header = {headers: {"Content-Type": "application/x-www-form-urlencoded"}}
@@ -81,6 +82,9 @@ export const putFcmtoken = async (params) => {
     console.log("modifyData: ",modifyData)
 
     const res = await jwtAxios.put(path+'member/fcmtoken', modifyData, header)
+
+    //const res = await axios.post('http://192.168.0.34:8080/api/member/login', params)
+
 
     return res.data
 }
