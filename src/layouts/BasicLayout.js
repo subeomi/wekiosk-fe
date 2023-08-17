@@ -48,39 +48,33 @@ const BasicLayout = ({ children }) => {
                 <div className="px-4 py-3 border-b-2 h-[60px] w-full bg-white">
                     <img src="/img/logo.png" alt="logo" className="w-[200px]" />
                 </div>
-                <div className="px-4 py-2.5 bg-white border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer active:bg-[rgb(228,108,10)] active:text-white active:border-[rgb(228,108,10)]">
-                    <span>매출현황</span>
-                    <span className="flex justify-center">
-                        <ion-icon name="chevron-forward-outline"></ion-icon>
-                    </span>
-
-            {/*<div className="min-w-[300px] w-[300px] h-screen bg-white flex flex-col items-center border-r-2">
-                <div className="px-7 py-2.5 border-b-2 h-[60px]">
-                    <img src="/img/logo.png" alt="logo" className="w-[440px]" />
-                </div>
-                <div className=" w-full ">
-                    <Link
-                        className="px-7 py-2.5 border-b-2 h-[60px] justify-between items-center flex font-bold text-xl cursor-pointer active:bg-[rgb(228,108,10)] active:text-white active:border-[rgb(228,108,10)]"
-                        to={"/sale/calendar"}>
+                <div className="w-full">
+                    <Link to={"/sale/calendar"}
+                        className="px-4 py-2.5 bg-white border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer active:bg-[rgb(228,108,10)] active:text-white active:border-[rgb(228,108,10)]">
                         <span>매출현황</span>
                         <span className="flex justify-center">
                             <ion-icon name="chevron-forward-outline"></ion-icon>
                         </span>
-                    </Link>*/}
-
+                    </Link>
                 </div>
-                <div className="px-4 py-2.5 bg-white border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer active:bg-[rgb(228,108,10)] active:text-white active:border-[rgb(228,108,10)]">
+                <div className="w-full">
+                    <Link to={"/products"}
+                    className="px-4 py-2.5 bg-white border-b-2 h-[60px] justify-between items-center flex font-bold text-xl cursor-pointer active:bg-[rgb(228,108,10)] active:text-white active:border-[rgb(228,108,10)]">
                     <span>상품관리</span>
                     <span className="flex justify-center">
                         <ion-icon name="chevron-forward-outline"></ion-icon>
                     </span>
+                    </Link>
                 </div>
 
-                <div className="px-4 py-2.5 bg-white border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer active:bg-[rgb(228,108,10)] active:text-white active:border-[rgb(228,108,10)]">
+                <div className="w-full">
+                    <Link to={"/payment"}
+                    className="px-4 py-2.5 bg-white border-b-2 h-[60px] justify-between items-center flex font-bold text-xl cursor-pointer active:bg-[rgb(228,108,10)] active:text-white active:border-[rgb(228,108,10)]">
                     <span>주문내역</span>
                     <span className="flex justify-center">
                         <ion-icon name="chevron-forward-outline"></ion-icon>
                     </span>
+                    </Link>
                 </div>
                 <div className="w-full">
                     <Link
@@ -94,7 +88,7 @@ const BasicLayout = ({ children }) => {
                         </span>
                     </Link>
 
-                {/*<div className="w-full ">
+                    {/*<div className="w-full ">
                     <Link
                         className="px-7 py-2.5 border-b-2 h-[60px] justify-between items-center flex font-bold text-xl cursor-pointer active:bg-[rgb(228,108,10)] active:text-white active:border-[rgb(228,108,10)]"
                         to={"/payment"}>
@@ -152,7 +146,7 @@ const BasicLayout = ({ children }) => {
                                 </span>
                             </Link>
 
-                {/*<div className="px-7 py-2.5 border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer active:bg-[rgb(228,108,10)] active:text-white active:border-[rgb(228,108,10)]"
+                            {/*<div className="px-7 py-2.5 border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer active:bg-[rgb(228,108,10)] active:text-white active:border-[rgb(228,108,10)]"
                 // onClick={handleLogout}>
                 >
                     <span>로그아웃</span>
@@ -207,7 +201,7 @@ const BasicLayout = ({ children }) => {
 
                 <div className="container mx-auto min-w-[1280px] bg-white min-h-[720px]">
 
-                {/*<div className="h-[60px] text-2xl font-bold bg-white flex items-center justify-center border-b-2">
+                    {/*<div className="h-[60px] text-2xl font-bold bg-white flex items-center justify-center border-b-2">
                     현재 화면
                 </div>
 
