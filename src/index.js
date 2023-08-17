@@ -4,15 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from 'react-router-dom';
-import router from './routers/member/memberRoot';
 import { Provider } from 'react-redux';
 import store from './store/store';
-
+import Prouter from './routers/payment/paymentRoot';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <RouterProvider router={router}>
+    <RouterProvider router={Prouter}>
       <App />
     </RouterProvider>
   </Provider>
