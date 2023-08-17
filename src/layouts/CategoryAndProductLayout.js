@@ -1,7 +1,7 @@
 import React from 'react';
-import CategoryList from '../component/CategoryList';
-import ProductList from '../component/ProductList';
-import SelectList from "../component/SelectList";
+import CategoryList from '../components/product/CategoryList';
+import ProductList from '../components/product/ProductList';
+import SelectList from "../components/product/SelectList";
 
 const CategoryAndProductLayout = ({
                                       categories,

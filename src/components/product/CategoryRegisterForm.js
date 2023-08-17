@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {createCategory} from '../api/categoryAPI';
+import {createCategory} from '../../api/categoryAPI';
 import {useSelector} from "react-redux";
 
 

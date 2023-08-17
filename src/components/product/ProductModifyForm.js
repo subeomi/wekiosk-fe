@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {deleteProduct, putProduct} from '../api/productAPI';
+import {deleteProduct, putProduct} from '../../api/productAPI';
 
 const ProductModifyForm = ({product, setProduct, products, setProducts, onClose}) => {
     const [productName, setProductName] = useState('');

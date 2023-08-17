@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {fetchCategories, fetchProductsByCategory, createCategory} from "../api/categoryAPI";
-import {createProduct} from "../api/productAPI";
-import Modal from "../component/Modal";
-import CategoryAndProductLayout from '../layouts/CategoryAndProductLayout';
-import CategoryModifyForm from '../component/CategoryModifyForm';
+import {fetchCategories, fetchProductsByCategory, createCategory} from "../../api/categoryAPI";
+import {createProduct} from "../../api/productAPI";
+import Modal from "../../components/product/Modal";
+import CategoryAndProductLayout from '../../layouts/CategoryAndProductLayout';
+import CategoryModifyForm from '../../components/product/CategoryModifyForm';
 import {useSelector} from "react-redux";
-import BasicLayout from "../layouts/BasicLayout";
+import BasicLayout from '../../layouts/BasicLayout';
 
 
 const CategoryAndProductPage = () => {

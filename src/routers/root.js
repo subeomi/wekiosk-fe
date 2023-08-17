@@ -32,6 +32,8 @@ const Sales_Index = lazy(() => import("../pages/sales/IndexPage"))
 const Sales_Calendar = lazy(() => import("../pages/sales/CalendarPage"))
 const Sales_Chart = lazy(() => import("../pages/sales/ChartPage"))
 
+const Products_Index = lazy(() => import("../pages/product/CategoryAndProductPage"))
+
 
 const router = createBrowserRouter([
   {
@@ -123,6 +125,10 @@ const router = createBrowserRouter([
         element: <Suspense fallback={Loading}><Sales_Chart /></Suspense>,
       },
     ]
+  },
+  {
+    path: "products",
+    element: <Suspense fallback={Loading}><Products_Index /></Suspense>
   }
 ])
 

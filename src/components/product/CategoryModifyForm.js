@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {deleteCategory, fetchProductsByCategory, updateCategory} from '../api/categoryAPI';
+import {deleteCategory, fetchProductsByCategory, updateCategory} from '../../api/categoryAPI';
 
 const CategoryModifyForm = ({ cateno, categories, setCategories, onClose }) => {
     const [categoryName, setCategoryName] = useState('')

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {getOne} from "../api/categoryAPI";
-import {showProduct, toggleShowProduct} from "../api/productAPI";
+import {getOne} from "../../api/categoryAPI";
+import {showProduct, toggleShowProduct} from "../../api/productAPI";
 
 
 const SelectList = ({selectList, pageSetProducts, selectedCategory}) => {
