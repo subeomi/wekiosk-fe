@@ -40,7 +40,12 @@ const ProductModifyForm = ({product, setProduct, products, setProducts, onClose}
     const handleClickDelete = () => {
         deleteProduct(product.pno).then(data => {
             alert("삭제 완료")
+
+            const newProducts = products.filter(p => p.pno !== product.pno)
+            
+            setProducts(newProducts)
         })
+        onClose()
     }
     const handleSubmit = async () => {
 

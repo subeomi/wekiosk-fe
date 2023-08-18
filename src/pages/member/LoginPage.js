@@ -20,7 +20,6 @@ const LoginPage = () => {
 
     return (
         <div>
-            Login Page...
             <LoginComponent
                 moveStoreSelect={moveStoreSelect}
                 moveSignUp={moveSignUp}

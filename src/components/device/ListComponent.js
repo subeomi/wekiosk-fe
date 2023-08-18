@@ -91,7 +91,7 @@ const ListComponent = () => {
                         onClick={() => showProductModal(item)}
                     >
                         <div>
-                            image..
+                            <img src={`http://localhost/${item.gimages}`}/>
                         </div>
                         <p className="text-gray-400 text-2xl">
                             {item.pname}

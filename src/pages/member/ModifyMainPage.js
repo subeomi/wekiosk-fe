@@ -10,7 +10,6 @@ const ModifyPage = () => {
     return (
         <BasicLayout>
             <div className="bg-gray-50 h-screen">
-                ModifyPage...
                 <ModifyMainComponent></ModifyMainComponent>
             </div>
         </BasicLayout>

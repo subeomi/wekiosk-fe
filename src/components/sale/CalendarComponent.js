@@ -14,13 +14,15 @@ const CalendarComponent = () => {
 
   const payment = useSelector(state => state.payment)
 
+  const sno = useSelector(state => state.store.sno)
+
   const dispatch = useDispatch()
 
   useEffect(() => {
 
     const date = payment.viewDate ? payment.viewDate : moment().format("YYYY-MM-DD")
 
-    dispatch(getPaymentSalesThunk({ sno: 1, date: date }))
+    dispatch(getPaymentSalesThunk({ sno: sno, date: date }))
     dispatch(toggleIsCal(true))
 
   }, [payment.viewDate, dispatch])

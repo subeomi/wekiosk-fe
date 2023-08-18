@@ -56,7 +56,7 @@ const OrderComponent = ({ setOrderModal, orderModal, setCart, cart }) => {
             : [...cartItem.options, options];
 
         const updatedPrice = updatedOptions.reduce((sum, opt) => sum + opt.oprice, pprice);
-
+        
         setCartItem({
             ...cartItem,
             options: updatedOptions,
@@ -101,7 +101,7 @@ const OrderComponent = ({ setOrderModal, orderModal, setCart, cart }) => {
                             {options.map(option => (
                                 <li
                                     key={option.ord}
-                                    className={`border-2 rounded-xl text-2xl font-bold p-3 mr-3 mb-3 ${cartItem.option.includes(option) ? 'bg-[rgb(228,108,10)] text-white border-[rgb(228,108,10)]' : 'text-gray-400 border-stone-300'}`}
+                                    className={`border-2 rounded-xl text-2xl font-bold p-3 mr-3 mb-3 ${cartItem.options.includes(option) ? 'bg-[rgb(228,108,10)] text-white border-[rgb(228,108,10)]' : 'text-gray-400 border-stone-300'}`}
                                     onClick={() => handleOptionClick(option)}>
                                     {option.oname} - \{option.oprice.toLocaleString()}
                                 </li>

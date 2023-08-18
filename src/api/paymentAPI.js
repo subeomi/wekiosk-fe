@@ -1,7 +1,8 @@
 import axios from "axios"
 import { createSearchParams } from "react-router-dom"
 
-const url = "http://192.168.0.34:8080/api"
+// const url = "http://192.168.0.34:8080/api"
+const url = "https://192.168.0.29:8443/api"
 
 
 export const getPaymentList = async (sno, queryObj) => {

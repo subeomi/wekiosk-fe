@@ -196,10 +196,10 @@ const BasicLayout = ({ children }) => {
             <div className="w-full">
 
 
-                <div className="min-w-[80vw] w-[300px] h-[60px] bg-white flex flex-col items-center drop-shadow-xl border-r-2">
+                <div className="min-w-[80vw] w-[300px] h-[60px] bg-white flex flex-col items-center border-b-2 border-r-2">
                 </div>
 
-                <div className="container mx-auto min-w-[1280px] bg-white min-h-[720px]">
+                <div className="container min-w-[1280px] bg-white min-h-[720px]">
 
                     {/*<div className="h-[60px] text-2xl font-bold bg-white flex items-center justify-center border-b-2">
                     현재 화면

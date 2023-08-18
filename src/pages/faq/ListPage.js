@@ -25,9 +25,7 @@ const ListPage = () => {
 
     return (
         <div>
-            <div className="text-center">
-
-                faq list page...
+            <div className="text-center mt-10">
                 <ListSearchComponent
                     moveSearch={moveSearch}
                     queryObj={queryObj}

@@ -43,6 +43,8 @@ const PaymentComponent = ({ setPaymentModal, cart, setCart, calculateTotalPrice,
             }
 
             postPayment(paymentMain).then(payno => {
+                // const emailJson = { email: email };
+                // postPaymentFcm(emailJson)
                 postPaymentFcm(email)
                 console.log("payno: ",payno)
                 closePaymentModal()

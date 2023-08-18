@@ -14,14 +14,14 @@ export const getCategoryList = async () => {
 
 export const getCategoryListBySno = async (sno) => {
 
-    const res = await jwtAxios.get(path+`category/${sno}/store`)
+    const res = await jwtAxios.get(path+`category/list/${sno}`)
 
     return res.data
 }
 
 export const getProductList = async (cateno) => {
     
-    const res = await jwtAxios.get(path+`category/${cateno}/products`)
+    const res = await jwtAxios.get(path+`category/${cateno}/showProducts`)
 
     return res.data
 }

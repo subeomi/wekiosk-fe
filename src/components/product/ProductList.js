@@ -15,7 +15,7 @@ const ProductList = ({selectedCategory, onSubmit, pageProducts, pageSetProducts}
     const fetchProducts = async () => {
         try {
             if (selectedCategory !== null) {
-                const response = await fetch(`http://localhost:8080/api/category/${selectedCategory}/products`, {
+                const response = await fetch(`https://192.168.0.29:8443/api/category/${selectedCategory}/products`, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
@@ -94,7 +94,7 @@ const ProductList = ({selectedCategory, onSubmit, pageProducts, pageSetProducts}
             </Modal>
             <Modal isOpen={isProductFormOpen} onClose={closeProductForm}>
 
-                <ProductForm onClose={closeProductForm} onSubmit={onSubmit} onSuccess={handleProductFormSuccess}/>
+                <ProductForm onClose={closeProductForm} onSubmit={onSubmit} onSuccess={handleProductFormSuccess} products={products} setProducts={setProducts}/>
             </Modal>
             <div className="w-full flex flex-wrap">
                 <ul className="w-full border-t-1 border-black">

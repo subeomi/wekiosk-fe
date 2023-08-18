@@ -15,7 +15,6 @@ const SelectPage = () => {
 
     return (
         <div>
-            Select Store Page...
             <SelectComponent moveStoreRegist={moveStoreRegist} moveTest={moveTest}></SelectComponent>
         </div>
     );

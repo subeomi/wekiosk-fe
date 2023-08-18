@@ -1,6 +1,6 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
-const ProductForm = ({categories, onSubmit, onClose, onSuccess}) => {
+const ProductForm = ({categories, onSubmit, onClose, onSuccess, products, setProducts}) => {
     const [selectedCategory, setSelectedCategory] = useState('');
     const [productName, setProductName] = useState('');
     const [productPrice, setProductPrice] = useState('');
@@ -8,6 +8,13 @@ const ProductForm = ({categories, onSubmit, onClose, onSuccess}) => {
     const [productImages, setProductImages] = useState([]);
     const [item, setItem] = useState({})
     const fileRef = useRef()
+    const [refresh, setRefresh] = useState(false)
+
+    useEffect(() => {
+
+        setProducts([...products])
+
+    }, [refresh])
 
 
     const handleImageUpload = (files) => {
@@ -29,8 +36,6 @@ const ProductForm = ({categories, onSubmit, onClose, onSuccess}) => {
         updatedOptions[index][field] = value;
         setOptions(updatedOptions);
     };
-
-    console.log(options)
 
     const handleSubmit = () => {
         const formData = new FormData();
@@ -57,6 +62,10 @@ const ProductForm = ({categories, onSubmit, onClose, onSuccess}) => {
         for (let value of formData.values()){
             console.log(value)
         }
+        
+        console.log("be~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        setRefresh(!refresh)
+        console.log("af~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         onClose();
     };
 

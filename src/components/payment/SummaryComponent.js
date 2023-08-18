@@ -9,6 +9,7 @@ const SummaryComponent = () => {
 
   const payment = useSelector(state => state.payment)
   const ostatus = useSelector(state => state.detail.ostatus)
+  const sno = useSelector(state => state.store.sno)
 
   const dispatch = useDispatch()
 
@@ -16,7 +17,7 @@ const SummaryComponent = () => {
 
   useEffect(() => {    
 
-    dispatch(getPaymentSalesThunk({ sno: 1, date: date }))
+    dispatch(getPaymentSalesThunk({ sno: sno, date: date }))
 
   }, [ostatus])
 
