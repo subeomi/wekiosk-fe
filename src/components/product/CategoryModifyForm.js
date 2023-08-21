@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import {deleteCategory, fetchProductsByCategory, updateCategory} from '../../api/categoryAPI';
 
-const CategoryModifyForm = ({ cateno, categories, setCategories, onClose }) => {
+const CategoryModifyForm = ({ cateno, categories, setCategories, onClose, setTestCate }) => {
     const [categoryName, setCategoryName] = useState('')
 
     useEffect(() => {
         async function fetchCategory() {
             try {
-                const response = await fetch(`http://localhost:8080/api/category/list/${cateno}`);
+                const response = await fetch(`https://192.168.0.29:8443/api/category/list/${cateno}`);
                 const categoryData = await response.json();
                 setCategoryName(categoryData.catename);
             } catch (error) {
@@ -25,11 +25,13 @@ const CategoryModifyForm = ({ cateno, categories, setCategories, onClose }) => {
         e.preventDefault();
 
         try {
-            await updateCategory(cateno, { catename: categoryName });
-            const modCate = categories.map(category => (
-                category.cateno === cateno ? {...category, catename: categoryName} : category
-            ))
-            setCategories(modCate)
+            await updateCategory(cateno, { catename: categoryName }).then(data => {
+                setTestCate([])
+            })
+            // const modCate = categories.map(category => (
+            //     category.cateno === cateno ? {...category, catename: categoryName} : category
+            // ))
+            // setCategories(modCate)
             onClose();
         } catch (error) {
             console.error('Error updating category:', error);
@@ -44,6 +46,7 @@ const CategoryModifyForm = ({ cateno, categories, setCategories, onClose }) => {
             if (productsInCategory.length === 0) {
                 await deleteCategory(cateno);
                 alert("삭제완료")
+                setTestCate([])
                 onClose()
             } else {
                 alert('카테고리에 상품이 있어 삭제할 수 없습니다.');

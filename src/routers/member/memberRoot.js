@@ -94,7 +94,7 @@ const router = createBrowserRouter([
         element: <Suspense fallback={Loading}><Device_Index/></Suspense>,
         children: [
             {
-                path: "list",
+                path: "list/:sno",
                 element: <Suspense fallback={Loading}><Device_List/></Suspense>
             }
         ]

@@ -3,7 +3,7 @@ import {createCategory} from '../../api/categoryAPI';
 import {useSelector} from "react-redux";
 
 
-const CategoryRegisterForm = ({onClose}) => {
+const CategoryRegisterForm = ({onClose, setTestCate, testCate}) => {
     const [categoryName, setCategoryName] = useState('');
     const sno = useSelector((state) => state.store.sno);
     const handleCategoryNameChange = (e) => {
@@ -14,7 +14,9 @@ const CategoryRegisterForm = ({onClose}) => {
         try {
             const categoryData = {catename: categoryName ,storeSno: sno};
             console.log("store : " + sno)
-            await createCategory(categoryData);
+            await createCategory(categoryData).then(data => {
+                setTestCate([...testCate, data])
+            })
             console.log('Category submitted:', categoryName);
             onClose();
         } catch (error) {

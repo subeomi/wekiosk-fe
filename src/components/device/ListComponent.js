@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { getCategoryList, getCategoryListBySno, getList, getProductList } from "../../api/deviceAPI";
 import OrderComponent from "./OrderComponent";
 import PaymentComponent from "./PaymentComponent";
+import { useParams } from "react-router-dom";
 
 
 
@@ -16,12 +17,13 @@ const ListComponent = () => {
     const [target, setTarget] = useState(0)
     const [cart, setCart] = useState([])
     const [products, setProducts] = useState([])
+    const {sno} = useParams()
 
     // console.log(storeInfo)
 
     useEffect(() => {
 
-        getCategoryListBySno(storeInfo.sno).then(data => {
+        getCategoryListBySno(sno).then(data => {
 
             setCategory(data)
 
@@ -35,6 +37,9 @@ const ListComponent = () => {
     }, [target])
 
     // console.log("p: ", products)
+
+    console.log("param: ", sno)
+
     console.log("order", orderModal)
 
     console.log("cart: ", cart)
@@ -61,7 +66,6 @@ const ListComponent = () => {
     return (
         <div className="bg-gray-200">
             <div className="bg-white border-b-2 border-gray-500 px-6">
-
                 <div className="text-4xl font-bold pt-6 pb-2">
                     {storeInfo.sname}
                 </div>
@@ -91,7 +95,7 @@ const ListComponent = () => {
                         onClick={() => showProductModal(item)}
                     >
                         <div>
-                            <img src={`http://localhost/${item.gimages}`}/>
+                            <img src={`http://localhost/${item.gimages}`} />
                         </div>
                         <p className="text-gray-400 text-2xl">
                             {item.pname}
@@ -127,9 +131,9 @@ const ListComponent = () => {
                     setPaymentModal={setPaymentModal}
                     setCart={setCart}
                     cart={cart}
-                    sno={storeInfo.sno}
+                    sno={sno}
                     email={loginInfo.memail}
-                    ></PaymentComponent>
+                ></PaymentComponent>
             )}
         </div>
     );
