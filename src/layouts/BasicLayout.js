@@ -50,7 +50,9 @@ const BasicLayout = ({ children }) => {
                 </div>
                 <div className="w-full">
                     <Link to={"/sale/calendar"}
-                        className="px-4 py-2.5 bg-white border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer active:bg-[rgb(228,108,10)] active:text-white active:border-[rgb(228,108,10)]">
+                        className={`${isActivePath("/sale/calendar")
+                        ? "px-4 py-2.5 border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer bg-[rgb(228,108,10)] text-white border-[rgb(228,108,10)]"
+                        : "px-4 py-2.5 bg-white border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer "}`}>
                         <span>매출현황</span>
                         <span className="flex justify-center">
                             <ion-icon name="chevron-forward-outline"></ion-icon>
@@ -59,7 +61,9 @@ const BasicLayout = ({ children }) => {
                 </div>
                 <div className="w-full">
                     <Link to={"/products"}
-                    className="px-4 py-2.5 bg-white border-b-2 h-[60px] justify-between items-center flex font-bold text-xl cursor-pointer active:bg-[rgb(228,108,10)] active:text-white active:border-[rgb(228,108,10)]">
+                    className={`${isActivePath("/products")
+                    ? "px-4 py-2.5 border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer bg-[rgb(228,108,10)] text-white border-[rgb(228,108,10)]"
+                    : "px-4 py-2.5 bg-white border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer "}`}>
                     <span>상품관리</span>
                     <span className="flex justify-center">
                         <ion-icon name="chevron-forward-outline"></ion-icon>
@@ -69,7 +73,9 @@ const BasicLayout = ({ children }) => {
 
                 <div className="w-full">
                     <Link to={"/payment"}
-                    className="px-4 py-2.5 bg-white border-b-2 h-[60px] justify-between items-center flex font-bold text-xl cursor-pointer active:bg-[rgb(228,108,10)] active:text-white active:border-[rgb(228,108,10)]">
+                    className={`${isActivePath("/payment")
+                    ? "px-4 py-2.5 border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer bg-[rgb(228,108,10)] text-white border-[rgb(228,108,10)]"
+                    : "px-4 py-2.5 bg-white border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer "}`}>
                     <span>주문내역</span>
                     <span className="flex justify-center">
                         <ion-icon name="chevron-forward-outline"></ion-icon>

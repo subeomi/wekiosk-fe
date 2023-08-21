@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://192.168.0.29:8443/api';
+// const API_BASE_URL = 'https://192.168.0.29:8443/api';
+export const API_BASE_URL = 'http://wekiosk-env.eba-k6iwuxpt.ap-northeast-2.elasticbeanstalk.com/api';
 
 export const fetchCategories = async (sno) => {
     try {

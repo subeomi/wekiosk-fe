@@ -3,6 +3,7 @@ import Modal from './Modal';
 import ProductModifyForm from './ProductModifyForm';
 import ProductForm from "./ProductForm";
 import SelectList from './SelectList';
+import { API_BASE_URL } from '../../api/categoryAPI';
 
 const ProductList = ({ selectedCategory, onSubmit, pageProducts, pageSetProducts }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,7 +16,7 @@ const ProductList = ({ selectedCategory, onSubmit, pageProducts, pageSetProducts
     const fetchProducts = async () => {
         try {
             if (selectedCategory !== null) {
-                const response = await fetch(`https://192.168.0.29:8443/api/category/${selectedCategory}/products`, {
+                const response = await fetch(API_BASE_URL+`/category/${selectedCategory}/products`, {
                     headers: {
                         'Content-Type': 'application/json'
                     }

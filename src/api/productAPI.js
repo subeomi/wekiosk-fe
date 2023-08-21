@@ -1,6 +1,10 @@
 import axios from "axios";
-const API_BASE_URL = 'https://192.168.0.29:8443/api';
+import { API_BASE_URL } from "./categoryAPI";
+
+// const API_BASE_URL = 'https://192.168.0.29:8443/api';
 // const API_BASE_URL = 'http://localhost:8080/api';
+
+
 export const getList = async (queryObj) => {
     const queryString = new URLSearchParams(queryObj).toString();
 

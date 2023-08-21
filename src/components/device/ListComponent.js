@@ -4,6 +4,7 @@ import { getCategoryList, getCategoryListBySno, getList, getProductList } from "
 import OrderComponent from "./OrderComponent";
 import PaymentComponent from "./PaymentComponent";
 import { useParams } from "react-router-dom";
+import { getStore } from "../../api/storeAPI";
 
 
 
@@ -11,6 +12,7 @@ const ListComponent = () => {
 
     const loginInfo = useSelector(state => state.login)
     const storeInfo = useSelector(state => state.store)
+    const [myStore, setMyStore] = useState({})
     const [orderModal, setOrderModal] = useState('')
     const [paymentModal, setPaymentModal] = useState(false)
     const [category, setCategory] = useState([])
@@ -22,6 +24,11 @@ const ListComponent = () => {
     // console.log(storeInfo)
 
     useEffect(() => {
+
+        getStore(sno).then(data => {
+            setMyStore(data)
+            console.log("my store: ", data)
+        })
 
         getCategoryListBySno(sno).then(data => {
 
@@ -67,7 +74,7 @@ const ListComponent = () => {
         <div className="bg-gray-200">
             <div className="bg-white border-b-2 border-gray-500 px-6">
                 <div className="text-4xl font-bold pt-6 pb-2">
-                    {storeInfo.sname}
+                    {myStore.sname}
                 </div>
 
                 <div className="flex pb-2 pt-4">

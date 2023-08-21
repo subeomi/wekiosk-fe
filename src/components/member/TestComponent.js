@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { requestLogout } from "../../reducers/member/loginSlice";
 import { useNavigate } from "react-router-dom";
+import QrcodeMk from "./QrcodeMk";
 
 const TestComponent = () => {
 
@@ -8,32 +9,15 @@ const TestComponent = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    // console.log(loginState)
-
-    const handleLogout = () => {
-        dispatch(requestLogout())
-        navigate('../login')
-    };
-
     return (
-        <div>
-            <div className="flex flex-col justify-center items-center p-4">
-                <div className="mx-2 p-2 text-4xl font-extrabold cursor-pointer flex items-center">
-
-                    <span className="text-indigo-600 pt-1 mr-1">
-                        <ion-icon name="heart-outline"></ion-icon>
-                    </span>
-                    {loginState.mname}님 환영합니다!
+        <div className="flex justify-center mt-12">
+            <div>
+                <div className="flex justify-center p-4 border-4 border-black">
+                    <QrcodeMk></QrcodeMk>
                 </div>
-                <button
-                    className="flex items-center border-2 border-gray-150 px-2 rounded-3xl text-sm hover:bg-gray-100 cursor-pointer"
-                    onClick={handleLogout}
-                >
-                    우리를 버리고 떠나기
-                    <span className="text-xl pl-2 pt-1">
-                        <ion-icon name="log-out-outline"></ion-icon>
-                    </span>
-                </button>
+                <span className="text-[rgb(228,108,10)] font-bold text-2xl flex justify-center">
+                    모바일 주문 QR코드
+                </span>
             </div>
         </div>
     );
