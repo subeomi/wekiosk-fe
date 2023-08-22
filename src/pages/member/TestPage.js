@@ -4,7 +4,6 @@ import BasicLayout from "../../layouts/BasicLayout";
 const TestPage = () => {
     return (
         <BasicLayout>
-            Member Test Page...
             <TestComponent></TestComponent>
         </BasicLayout>
     );

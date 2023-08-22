@@ -12,7 +12,6 @@ const StoreModifyPage = () => {
 
     return (
         <div>
-            Store Modify...
             <StoreModifyComponent moveModifyMain={moveModifyMain}></StoreModifyComponent>
         </div>
     );
