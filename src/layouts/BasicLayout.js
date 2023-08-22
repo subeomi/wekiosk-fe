@@ -131,7 +131,7 @@ const BasicLayout = ({ children }) => {
                             ? "px-4 py-2.5 border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer bg-[rgb(228,108,10)] text-white border-[rgb(228,108,10)]"
                             : "px-4 py-2.5 bg-white border-b-2 h-[60px] w-full justify-between items-center flex font-bold text-xl cursor-pointer "}`}
                         to={"/membertest"}>
-                        TEST PAGE
+                        QR코드
                         <span className="flex justify-center">
                             <ion-icon name="chevron-forward-outline"></ion-icon>
                         </span>

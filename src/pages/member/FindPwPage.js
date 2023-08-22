@@ -11,7 +11,6 @@ const FindPwPage = () => {
 
     return (
         <div>
-            Find Password Page...
             <FindPwComponent moveLogin={moveLogin}></FindPwComponent>
         </div>
     );
